@@ -104,7 +104,6 @@ public class MainLoop {
 			if(inputs.keyID[40]){
 				yOffs++;
 			}
-			System.out.println(xOffs+ " " + yOffs);
 		}
 		while((xOffs+WINDOW_SIZE) > UNIVERSE_WIDTH)xOffs--;
 		if(xOffs < 0)xOffs=0;
