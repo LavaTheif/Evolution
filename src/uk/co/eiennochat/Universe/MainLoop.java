@@ -13,8 +13,8 @@ import uk.co.eiennochat.Universe.utils.Time;
 public class MainLoop {
 	public static Date today = new Date(1, 1, 0);
 	public static Time now = new Time(0, 0, 0);
-	public static int UNIVERSE_WIDTH = 0;
-	public static int UNIVERSE_HEIGHT = 0;
+	public static int UNIVERSE_WIDTH = 10000;
+	public static int UNIVERSE_HEIGHT = 10000;
 	public static final int WINDOW_SIZE = 650;
 	public static Ground[][] land = new Ground[UNIVERSE_WIDTH/Ground.WIDTH][UNIVERSE_HEIGHT/Ground.HEIGHT];
 	
@@ -104,11 +104,12 @@ public class MainLoop {
 			if(inputs.keyID[40]){
 				yOffs++;
 			}
+			System.out.println(xOffs+ " " + yOffs);
 		}
-		while((xOffs+WINDOW_SIZE) > UNIVERSE_WIDTH/10-1)xOffs--;
+		while((xOffs+WINDOW_SIZE) > UNIVERSE_WIDTH)xOffs--;
 		if(xOffs < 0)xOffs=0;
 
-		while((yOffs+WINDOW_SIZE) > UNIVERSE_HEIGHT/10)yOffs--;
+		while((yOffs+WINDOW_SIZE) > UNIVERSE_HEIGHT)yOffs--;
 		if(yOffs < 0)yOffs=0;
 
 		if(ticks%30==0){
@@ -146,6 +147,7 @@ public class MainLoop {
 		organisms.removeAll(deaths);
 		deaths.removeAll(deaths);
 		if(organisms.size()==0)spawnOrganisms();
+		if(selectedOrganism>organisms.size())selectedOrganism=organisms.size();
 	}
 	
 	private void spawnOrganisms(){
